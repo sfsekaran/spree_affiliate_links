@@ -1,13 +1,36 @@
 SpreeAffiliateLinks
 ===================
 
-Introduction goes here.
+I needed a way to give my Spree client a way to add footer affiliate
+images with links, and so I created an extension for that. Simple.
 
+You'll find an "Affiliate Links" section in the admin tabs. An example
+on how to display the links in the layout is below.
 
 Example
 =======
 
-Example goes here.
+It's not hard to use, but here's a seed to get you started:
+
+    # app/overrides/footer_affiliate_links.rb
+    Deface::Override.new(
+      :name => "footer_affiliate_links",
+      :virtual_path => "spree/layouts/spree_application",
+      :insert_bottom => "#footer",
+      :partial => "affiliate_links/footer"
+    )
+
+    # app/views/affiliate_links/_footer.html.erb
+    <%= Spree::AffiliateLink.each do |link| %>
+      <a href="<%= link.destination_url %>">
+        <%= image_tag link.image.attachment.url(:small) %>
+      </a>
+    <% end %>
+
+That'll get you all of the affiliate links in the footer. Currently,
+there's no way to order them, and you'll have to add your own image size
+to the Spree::Image paperclip configuration dynamically if you want
+that.
 
 Testing
 -------
@@ -18,4 +41,4 @@ Be sure to bundle your dependencies and then create a dummy test app for the spe
     $ bundle exec rake test_app
     $ bundle exec rspec spec
 
-Copyright (c) 2012 [name of extension creator], released under the New BSD License
+Copyright (c) 2012 Sathya Sekaran, released under the New BSD License
