@@ -1,0 +1,7 @@
+<h1><%= t("affiliate_link.new_link") %></h1>
+<%= render "spree/shared/error_messages", :target => @page %>
+
+<%= form_for [:admin, @affiliate_link], :html => { :multipart => true } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+<% end %>

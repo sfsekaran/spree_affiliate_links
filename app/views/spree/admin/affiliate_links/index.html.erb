@@ -1,0 +1,38 @@
+<div class='toolbar'>
+  <ul class='actions'>
+    <li id="new_product_link">
+      <%= button_link_to t("affiliate_link.new_link"), new_object_url, {:icon => 'add'} %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+<h1><%=t("affiliate_link.index_page") %></h1>
+
+<table class="index">
+  <tr>
+    <th><%= t("affiliate_link.name") %></th>
+    <th><%= t("affiliate_link.destination_url") %></th>
+    <th><%= t("affiliate_link.image") %></th>
+    <th><%= t("action") %></th>
+  </tr>
+  <tbody>
+    <% @affiliate_links.each do |affiliate_link| %>
+    <tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id affiliate_link %>">
+      <td>
+        <%= affiliate_link.name %>
+      </td>
+      <td>
+        <%= link_to affiliate_link.destination_url, affiliate_link.destination_url %>
+      </td>
+      <td>
+        <%= image_tag affiliate_link.image.attachment.url(:small) %>
+      </td>
+      <td>
+        <%= link_to_edit affiliate_link %> &nbsp;
+        <%= link_to_delete affiliate_link %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
