@@ -17,8 +17,8 @@
       <%= image.file_field :attachment %>
       <%= f.error_message_on :image %>
     <% end %>
-    <% if image.object.present? %>
-      <%= image_tag image.object.attachment.url(:small) %>
+    <% if @affiliate_link.image.attachment.present? %>
+      <%= image_tag @affiliate_link.image.attachment.url(:small) %>
     <% end %>
   <% end %>
 </div>
