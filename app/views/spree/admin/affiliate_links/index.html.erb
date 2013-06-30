@@ -1,19 +1,26 @@
-<div class='toolbar'>
-  <ul class='actions'>
-    <li id="new_product_link">
-      <%= button_link_to t("affiliate_link.new_link"), new_object_url, {:icon => 'add'} %>
-    </li>
-  </ul>
-  <br class='clear' />
-</div>
+<% content_for :page_actions do %>  
+  <li>
+    <%= button_link_to t("affiliate_link.new_link"), new_object_url, :icon => 'icon-plus' %>
+  </li>
+<% end %>
 
-<h1><%=t("affiliate_link.index_page") %></h1>
+<% content_for :page_title do %>
+  <%= t("affiliate_link.index_page") %>
+<% end %>
 
 <table class="index">
+  <colgroup>
+    <col style="width: 40%" />
+    <col style="width: 30%" />
+    <col style="width: 10%" />
+    <col style="width: 10%" />
+    <col style="width: 10%" />
+  </colgroup>
   <tr>
     <th><%= t("affiliate_link.name") %></th>
     <th><%= t("affiliate_link.destination_url") %></th>
     <th><%= t("affiliate_link.image") %></th>
+    <th><%= t("affiliate_link.sort") %></th>
     <th><%= t("action") %></th>
   </tr>
   <tbody>
@@ -29,7 +36,10 @@
         <%= image_tag affiliate_link.image.attachment.url(:small) %>
       </td>
       <td>
-        <%= link_to_edit affiliate_link %> &nbsp;
+        <%= affiliate_link.sort %>
+      </td>
+      <td>
+        <%= link_to_edit affiliate_link %><br />
         <%= link_to_delete affiliate_link %>
       </td>
     </tr>

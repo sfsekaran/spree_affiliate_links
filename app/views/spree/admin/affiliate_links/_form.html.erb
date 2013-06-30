@@ -11,6 +11,12 @@
     <%= f.error_message_on :destination_url %>
   <% end %>
 
+  <%= f.field_container :sort do %>
+    <%= f.label :sort %><br />
+    <%= f.number_field :sort, :class => 'title' %>
+    <%= f.error_message_on :sort %>
+  <% end %>
+
   <%= f.fields_for :image_attributes, @affiliate_link.image || @affiliate_link.build_image do |image| %>
     <%= f.field_container :image do %>
       <%= image.label :attachment, 'Image' %><span class="required">*</span><br />

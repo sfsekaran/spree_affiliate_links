@@ -11,6 +11,20 @@ needing a carousel with links to products that were configurable by the client.*
 You'll find an "Affiliate Links" section in the admin tabs. An example
 on how to display the links in the layout is below.
 
+Installation
+============
+
+    rake spree_affiliate_links:install:migrations
+    rake db:migrate
+
+What It Does
+============
+
+Stores a `name` associated with a `link`, `image`, and
+`sort`. That's it! The rest is up to you.
+
+You'll find a new tab in /admin where you can maintain these.
+
 Example
 =======
 
