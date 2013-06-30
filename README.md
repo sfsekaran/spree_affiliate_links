@@ -4,6 +4,10 @@ SpreeAffiliateLinks
 I needed a way to give my Spree client a way to add footer affiliate
 images with links, and so I created an extension for that. Simple.
 
+*This doesn't have to be tied to affiliate links. It can be used as a
+flexible image + url storage system. For example, I used it in a project
+needing a carousel with links to products that were configurable by the client.*
+
 You'll find an "Affiliate Links" section in the admin tabs. An example
 on how to display the links in the layout is below.
 
