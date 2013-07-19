@@ -1,8 +1,10 @@
 # encoding: UTF-8
+require 'spree_affiliate_links/version'
+
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_affiliate_links'
-  s.version     = '1.3.0'
+  s.version     = SpreeAffiliateLinks::VERSION
   s.summary     = 'Affiliate links with images for Spree using Paperclip.'
   # s.description = 'TODO: Add (optional) gem description here'
   s.required_ruby_version = '>= 1.8.7'
