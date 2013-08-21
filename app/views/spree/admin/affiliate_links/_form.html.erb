@@ -17,6 +17,12 @@
     <%= f.error_message_on :sort %>
   <% end %>
 
+  <%= f.field_container :placement do %>
+    <%= f.label :placement %><br />
+    <%= f.select :placement, [['Homepage Top', 'homepage_top'], ['Homepage Bottom', 'homepage_bottom']], :class => 'title', selected: (@affiliate_link.placement || params[:placement]), include_blank: 'Choose one...' %>
+    <%= f.error_message_on :placement %>
+  <% end %>
+
   <%= f.fields_for :image_attributes, @affiliate_link.image || @affiliate_link.build_image do |image| %>
     <%= f.field_container :image do %>
       <%= image.label :attachment, 'Image' %><span class="required">*</span><br />

@@ -1,6 +1,6 @@
 <% content_for :page_actions do %>  
   <li>
-    <%= button_link_to t("affiliate_link.new_link"), new_object_url, :icon => 'icon-plus' %>
+    <%= button_link_to t("affiliate_link.new_link"), new_object_url(placement: params[:placement]), :icon => 'icon-plus' %>
   </li>
 <% end %>
 
@@ -8,6 +8,14 @@
   <%= t("affiliate_link.index_page") %>
 <% end %>
 
+<p>Please click on a placement to manage links for that section:</p>
+<% ['homepage_top', 'homepage_bottom'].each do |placement| %>
+  <%= link_to placement.titleize, "?placement=#{placement}",
+  class: :button,
+  style: (params[:placement] == placement) ? "background: #9fc820" : '' %>
+<% end %>
+
+<% if @affiliate_links.present? %>
 <table class="index">
   <colgroup>
     <col style="width: 40%" />
@@ -46,3 +54,10 @@
     <% end %>
   </tbody>
 </table>
+<% else %>
+  <% if params[:placement].present? %>
+    <br />
+    <br />
+    <p>No items found. Please <%= link_to "create a new link", new_object_url(placement: params[:placement]) %>.</p>
+  <% end %>
+<% end %>

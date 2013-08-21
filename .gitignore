@@ -10,3 +10,4 @@ nbproject
 spec/dummy
 spree_affiliate_links-*.gem
 pkg/
+.rvmrc
